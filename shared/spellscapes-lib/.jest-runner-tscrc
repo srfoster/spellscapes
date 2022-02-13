@@ -1,0 +1,5 @@
+{
+  "jest-runner-tsc": {
+    "tsconfigPath": "./tsconfig.types.json"
+  }
+}

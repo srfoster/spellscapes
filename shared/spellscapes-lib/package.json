@@ -4,7 +4,16 @@
   "description": "Spellscapes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts":{
+    "test": "npx jest --watch"
+  },
   "files": [
     "/dist"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.5.1",
+    "jest-runner-tsc": "^1.6.0",
+    "ts-jest": "^27.1.3"
+  }
 }

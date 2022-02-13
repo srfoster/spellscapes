@@ -1,13 +1,18 @@
 import React from 'react';
+import {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 import {createSpell} from "spellscapes"
 
+
+
 function App() {
+  let [spell, setSpell] = useState(createSpell())
+
   return (
     <div className="App">
-       <p>{createSpell()}</p>
+       <p>{spell.getName()}</p>
     </div>
   );
 }
