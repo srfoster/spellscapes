@@ -1,0 +1,16 @@
+import {createSpell} from "./spells"
+
+class TestSensor{
+  
+}
+
+test('spells generate sensor intentions', () => {
+  let s = createSpell({components: 
+                        {sensor_cores: [new TestSensor()]}})
+
+  expect(s.getName()).not.toBe(undefined);
+
+  let si = s.getSensorIntentions()
+  
+
+});
