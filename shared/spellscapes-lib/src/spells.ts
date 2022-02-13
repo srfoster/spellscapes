@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-class Spell {
+export class Spell {
   sensor_cores:Array<IntentionGenerator<any>>
   program_cores:Array<Program>
   actuator_cores:Array<IntentionGenerator<any>>
@@ -28,7 +28,10 @@ class Spell {
   }
 
   gatherIntentionsFor(cores) {
-    return _.flatten(_.map(cores, (m)=>m.getIntentions()))
+    return _.flatten(_.map(cores, (m)=>m.getIntentions().map((i)=>{
+     i.setParent(this)
+     return i 
+   })))
   }
 
   getName(){
@@ -39,8 +42,12 @@ class Spell {
 export class Intention<T>{
   status:IntentionStatus
   value:T
+  parent:Spell
   constructor(){
     this.status = IntentionStatus.WAITING
+  }
+  setParent(parent:Spell){
+    this.parent = parent
   }
   fullfilled(){
     return this.status == IntentionStatus.FULLFILLED
@@ -73,29 +80,17 @@ export enum IntentionStatus{
   DENIED = "DENIED"
 }
 
-
-
-export class SenseSquareRelative<T> extends Intention<T>{
+export class SquareRelative<T> extends Intention<T>{
   relX:number
   relY:number
-  constructor(relX:number,relY:number){
+  verb:string
+  constructor(verb:string, relX:number,relY:number){
     super()
     this.relX=relX
     this.relY=relY
+    this.verb=verb
   }
 }
-
-export class EatSquareRelative<T> extends Intention<T>{
-  relX:number
-  relY:number
-  constructor(relX:number,relY:number){
-    super()
-    this.relX=relX
-    this.relY=relY
-  }
-}
-
-
 
 export function createSpell(options){
   return new Spell(options)

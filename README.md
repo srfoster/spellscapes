@@ -20,7 +20,14 @@ The plan is that a "spellscape" will maintain a population of spells, and on eve
 
 See the tests for the basics of constructing a spell with these components, stitching them together, and ticking them.
 
-TODO: API could use some cleanup probably.  Make World class.  Make renderer.  Make simple sugarscape clone.  Formalize simple scripting language for programs?
+There's a simple Spellscape implementation `spellscapes.ts` that 
+
+* Implements fairness by randomizing the order that spells get to act on every tick
+* "Resolves" conflicts of movement by letting spells occupy the same squares
+
+TODO: Make this simple Spellscape resolve sensing intentions, spawn food, have walls, disallow leaving the grid, handle culling
+
+TODO: Complete the first world. API could use some cleanup. Make renderer.  Make simple sugarscape clone.  Formalize simple scripting language for programs?
 
 
 

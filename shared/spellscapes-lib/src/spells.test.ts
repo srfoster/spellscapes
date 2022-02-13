@@ -1,10 +1,10 @@
-import {createSpell, Program, IntentionGenerator, SenseSquareRelative, EatSquareRelative, IntentionStatus} from "./spells"
+import {createSpell, Program, IntentionGenerator, SquareRelative, IntentionStatus} from "./spells"
 
 
 test('spells generate sensor intentions that can be fullfilled', () => {
   class TestSensor implements IntentionGenerator<string>{
     getIntentions(){
-      return [new SenseSquareRelative<string>(0,0)]
+      return [new SquareRelative<string>("sense", 0,0)]
     }  
   }
 
@@ -35,14 +35,14 @@ test('spells can run programs that read sensor data', () => {
     xOffset = 0 
     nudge(){this.xOffset++}
     getIntentions(){
-      return [new SenseSquareRelative<string>(this.xOffset,0)]
+      return [new SquareRelative<string>("sense",this.xOffset,0)]
     }  
   }
 
   class TestProgram implements Program{
     run(sensors, sensor_intentions, actuators){ //Should it just take sensors+actuators and query the sensors for their most recent sensor readings?
       for(let si of sensor_intentions) {
-        let ssr = (si as SenseSquareRelative<any>)
+        let ssr = (si as SquareRelative<any>)
         if(ssr.fullfilled() && ssr.value.match(/apple/))
           actuators[0].eat()
         else
@@ -56,7 +56,7 @@ test('spells can run programs that read sensor data', () => {
     eat(){this.wantToEat = true}
     getIntentions(){
       if(this.wantToEat)
-        return [new EatSquareRelative<string>(0,0)]
+        return [new SquareRelative<string>("eat",0,0)]
       else
         return []
     }  
@@ -68,7 +68,7 @@ test('spells can run programs that read sensor data', () => {
                            actuator_cores: [new TestActuator()]}})
   
   let foundFood = (s)=>{
-    let ssr = s as SenseSquareRelative<string> 
+    let ssr = s as SquareRelative<string> 
     if(ssr.relX == 1 && ssr.relY == 0) 
       ssr.fullfill("There's an apple on that square")
     else
