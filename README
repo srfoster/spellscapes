@@ -1,0 +1,13 @@
+Okay lets prep for typescript-related contracts with a typescript backend/frontend
+- Let's make it fun by modeling sugarscape (backend, frontend, and shared libraries)
+
+* frontend is from create-react-app
+* backend is from typescript-express-starter (with knex selected during creation)
+* shared is homerolled with tsc defaults 
+
+
+TODO:
+* Make shared... 
+* Link shared into frontend
+* Commit the whole repo to a starter project
+  - Fork off for sugarscape
