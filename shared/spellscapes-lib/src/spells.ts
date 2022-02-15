@@ -1,6 +1,8 @@
 import * as _ from "lodash";
 
+let nextId = 0
 export class Spell {
+  id:number
   sensor_cores:Array<IntentionGenerator<any>>
   program_cores:Array<Program>
   actuator_cores:Array<IntentionGenerator<any>>
@@ -8,6 +10,7 @@ export class Spell {
   last_sensor_readings:Array<Intention<any>>
   
   constructor(options){
+    this.id = nextId++
     this.sensor_cores = options.components.sensor_cores || []
     this.program_cores = options.components.program_cores || []
     this.actuator_cores = options.components.actuator_cores || []

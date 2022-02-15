@@ -15,6 +15,7 @@ export class Spellscape{
   }
 
   addSpellAt(spell, row, col){
+    console.log("Adding spell at")
     if(!this.spells[row+","+col]) 
        this.spells[row+","+col] = []
 
@@ -39,6 +40,10 @@ export class Spellscape{
     return undefined
   }
 
+  previousLocationOf(spell){
+    return spell.previousLocation 
+  }
+
   removeSpell(spell){
     for(let loc of Object.keys(this.spells)){
       let i = this.spells[loc].indexOf(spell)
@@ -56,6 +61,7 @@ export class Spellscape{
     this.removeSpell(spell)
 
     this.addSpellAt(spell, row+relRow, col+relCol)
+    spell.previousLocation = {row, col}
   }
 
   handleSensorIntentions(sis){

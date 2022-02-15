@@ -7,9 +7,9 @@ import { Stage, Sprite, useTick } from '@inlet/react-pixi'
 import { BLEND_MODES } from '@pixi/constants'
 
 
-
 import {Spellscape, createBlindWanderingGrazer} from "spellscapes"
 
+import {MyComponent} from "spellscapes-react"
 
 const Bunny = (props:any) => {
   // states
@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+       <MyComponent />
        <div>
        <button onClick={(e)=> { 
           setTickle(Math.random())

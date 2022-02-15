@@ -1,5 +1,15 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSpell = void 0;
-var spells_1 = require("./spells");
-Object.defineProperty(exports, "createSpell", { enumerable: true, get: function () { return spells_1.createSpell; } });
+__exportStar(require("./spells"), exports);
+__exportStar(require("./spellscapes"), exports);
+__exportStar(require("./example-spells"), exports);

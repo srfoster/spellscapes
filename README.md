@@ -25,7 +25,13 @@ There's a simple Spellscape implementation `spellscapes.ts` that
 * Implements fairness by randomizing the order that spells get to act on every tick
 * "Resolves" conflicts of movement by letting spells occupy the same squares
 
+TODO: Clean up hacked-together pixi js rendering in `frontend`.  Optimize for many sprites.  Make animations less jumpy look better.   Come up with clear visual language for displaying spells with their various components.
+  * Look at more of the pixi react example for the appropriate idioms: https://codepen.io/collection/XPpGdb/
+  * Consider react-spring for animating agent movement: https://github.com/pmndrs/react-spring
+
 TODO: Make this simple Spellscape resolve sensing intentions, spawn food, have walls, disallow leaving the grid, handle culling
+
+TODO: Do we want worlds (as well as spells) to be modular?  E.g. food spawners?  
 
 TODO: Complete the first world. API could use some cleanup. Make renderer.  Make simple sugarscape clone.  Formalize simple scripting language for programs?
 
